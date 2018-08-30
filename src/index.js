@@ -17,19 +17,29 @@ const Osa = ({ kurssi }) => {
     const osat = kurssi.osat
 
     return (
-        <ul style={{listStyleType: "none"}}>
-            {osat.map(osa => <li key= {osa.id}>{osa.nimi} {osa.tehtavia}</li>)}
+        <ul style={{ listStyleType: "none" }}>
+            {osat.map(osa => <li key={osa.id}>{osa.nimi} {osa.tehtavia}</li>)}
         </ul>
     )
 }
 
+const Yhteensa = ({ kurssi }) => {
+    const tehtavienLkm = kurssi.osat.reduce((summa, tehtavat) => summa + tehtavat.tehtavia, 0);
+
+    return (
+        <div>Yhteensä {tehtavienLkm} tehtävää</div>
+    )
+}
+
 const Kurssi = ({ kurssi }) => {
+    
+
     return (
         <div>
             <Otsikko kurssi={kurssi} />
             <Sisalto kurssi={kurssi} />
+            <Yhteensa kurssi={kurssi}/>
         </div>
-
     )
 }
 
@@ -58,7 +68,7 @@ const App = () => {
 
     return (
         <div>
-                <Kurssi kurssi={kurssi} />
+            <Kurssi kurssi={kurssi} />
         </div>
     )
 }
