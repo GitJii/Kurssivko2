@@ -48,6 +48,7 @@ const Opetusohjelma = ({ kurssit }) => {
     return (
     
     <ul style={{ listStyleType: "none" }}>
+    <h1>Opetusohjelma</h1>
         {opetusohjelma.map(kurssi => <Kurssi key={kurssi.id} kurssi={kurssi}/>)}
     </ul>
     
