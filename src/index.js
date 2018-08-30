@@ -32,7 +32,6 @@ const Yhteensa = ({ kurssi }) => {
 }
 
 const Kurssi = ({ kurssi }) => {
-    
 
     return (
         <div>
@@ -43,10 +42,23 @@ const Kurssi = ({ kurssi }) => {
     )
 }
 
-const App = () => {
-    const kurssi = {
+const Opetusohjelma = ({ kurssit }) => {
+    const opetusohjelma = kurssit
 
+    return (
+    
+    <ul style={{ listStyleType: "none" }}>
+        {opetusohjelma.map(kurssi => <Kurssi key={kurssi.id} kurssi={kurssi}/>)}
+    </ul>
+    
+    )
+}
+
+const App = () => {
+    const kurssit = [
+        {
         nimi: 'Half Stack -sovelluskehitys',
+        id: 1,
         osat: [
             {
                 nimi: 'Reactin perusteet',
@@ -64,11 +76,28 @@ const App = () => {
                 id: 3
             }
         ]
+    },
+    {
+        nimi: 'Node.js',
+        id: 2,
+        osat: [
+            {
+                nimi: 'Routing',
+                tehtavia: 3,
+                id: 1
+            },
+            {
+                nimi: 'Middlewaret',
+                tehtavia: 7,
+                id: 2
+            }
+        ]
     }
+]
 
     return (
         <div>
-            <Kurssi kurssi={kurssi} />
+            <Opetusohjelma kurssit={kurssit} />
         </div>
     )
 }
